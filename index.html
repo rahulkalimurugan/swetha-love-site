@@ -19,7 +19,7 @@ body {
   overflow-x: hidden;
 }
 
-/* SECTION */
+/* SECTIONS */
 .section {
   height: 100vh;
   position: relative;
@@ -30,7 +30,6 @@ body {
   scroll-snap-align: start;
 }
 
-/* TEXT CONTAINER */
 .container {
   z-index: 2;
   max-width: 700px;
@@ -45,16 +44,8 @@ body {
   transform: translateY(0);
 }
 
-/* TEXT */
-h1 {
-  font-size: 3em;
-  margin-bottom: 15px;
-}
-
-p {
-  font-size: 1.3em;
-  line-height: 1.6;
-}
+h1 { font-size: 2.8em; }
+p { font-size: 1.2em; line-height: 1.6; }
 
 /* BACKGROUND */
 .bg {
@@ -62,19 +53,14 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  top: 0;
-  left: 0;
-  z-index: 1;
   filter: brightness(0.5);
 }
 
-/* DARK FADE */
 .fade {
   position: absolute;
   width: 100%;
   height: 100%;
   background: linear-gradient(to top, black, transparent);
-  z-index: 1;
 }
 
 /* SCROLL SNAP */
@@ -83,114 +69,176 @@ html {
   scroll-behavior: smooth;
 }
 
+/* HEARTS */
+.heart {
+  position: fixed;
+  color: pink;
+  font-size: 20px;
+  animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
 /* MUSIC BUTTON */
 .music-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgba(255,255,255,0.15);
+  padding: 10px 15px;
+  border-radius: 20px;
   border: none;
-  padding: 12px 18px;
-  border-radius: 25px;
+  background: rgba(255,255,255,0.2);
   color: white;
+}
+
+/* COUNTER */
+.counter {
+  position: fixed;
+  top: 20px;
+  left: 20px;
   font-size: 14px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
+  opacity: 0.8;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 MUSIC -->
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<div class="counter" id="counter"></div>
 
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
 <button class="music-btn" onclick="toggleMusic()">Play ❤️</button>
 
 <!-- ❤️ INTRO -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?random=1" class="bg">
+  <img src="https://picsum.photos/1080/1920?1" class="bg">
   <div class="fade"></div>
   <div class="container">
     <h1>Hey cutie ❤️</h1>
-    <p>You’re not just anyone… you’re my queen.</p>
+    <p>You’re my queen. Always have been.</p>
   </div>
 </section>
 
-<!-- 💌 LOVE -->
+<!-- 🍝 FIRST DATE -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?random=2" class="bg">
+  <img src="https://picsum.photos/1080/1920?2" class="bg">
   <div class="fade"></div>
   <div class="container">
-    <p>I don’t think I’ll ever fully explain how much I love you…<br><br>
-    But I’ll keep trying, every single day.</p>
-  </div>
-</section>
-
-<!-- 📸 FIRST DATE -->
-<section class="section">
-  <img src="https://picsum.photos/1080/1920?random=3" class="bg">
-  <div class="fade"></div>
-  <div class="container">
-    <h1>Our First Date ❤️</h1>
-    <p>Nassau Hub… bowling… and that terrible pasta 😭<br><br>
-    You took it from me and gave me your burger…<br>
-    That moment meant everything.</p>
+    <h1>Our First Date</h1>
+    <p>Nassau Hub… bowling… and that terrible pasta 😭<br>
+    You saved me with that burger…<br>
+    I knew that day was special.</p>
   </div>
 </section>
 
 <!-- 🫂 HUG -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?random=4" class="bg">
+  <img src="https://picsum.photos/1080/1920?3" class="bg">
   <div class="fade"></div>
   <div class="container">
-    <h1>That Hug 🫂</h1>
-    <p>You called me… we walked that empty street…<br><br>
-    And that hug… I’ll never forget it.</p>
+    <h1>That Hug</h1>
+    <p>You needed me… and I came.<br>
+    That hug meant everything.</p>
   </div>
 </section>
 
-<!-- ❄️ FUN -->
+<!-- 🍽️ DINNER DATES -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?random=5" class="bg">
+  <img src="https://picsum.photos/1080/1920?4" class="bg">
   <div class="fade"></div>
   <div class="container">
-    <h1>Our Chaos ❄️</h1>
-    <p>Ice skating… Marine Kingdom…<br><br>
-    Just us laughing and being stupid together.</p>
+    <h1>All Those Dinner Dates 🍽️</h1>
+    <p>Every time I came to pick you after clinic…<br>
+    those dinners meant everything.<br><br>
+    (And yes… I was trying to make you fat 😭❤️)</p>
   </div>
 </section>
 
-<!-- ❤️ END -->
+<!-- 💍 RINGS -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?random=6" class="bg">
+  <img src="https://picsum.photos/1080/1920?5" class="bg">
   <div class="fade"></div>
   <div class="container">
-    <h1>Always ❤️</h1>
-    <p>I’ll always choose you.<br><br>Again and again.</p>
+    <h1>Our Rings 💍</h1>
+    <p>That day felt different…<br>
+    Like we were already building our future.</p>
+  </div>
+</section>
+
+<!-- 🏥 HOSPITAL -->
+<section class="section">
+  <img src="https://picsum.photos/1080/1920?6" class="bg">
+  <div class="fade"></div>
+  <div class="container">
+    <h1>Hospital Days 🏥</h1>
+    <p>Nerve-racking… but new experiences with you.<br>
+    That’s what made it special.</p>
+  </div>
+</section>
+
+<!-- 🎮 FUN -->
+<section class="section">
+  <img src="https://picsum.photos/1080/1920?7" class="bg">
+  <div class="fade"></div>
+  <div class="container">
+    <h1>Games & Chaos 🎮</h1>
+    <p>I still don’t know how you destroyed me in games and go-karting 😭<br>
+    But I loved every second.</p>
+  </div>
+</section>
+
+<!-- 🏠 FUTURE -->
+<section class="section">
+  <img src="https://picsum.photos/1080/1920?8" class="bg">
+  <div class="fade"></div>
+  <div class="container">
+    <h1>That Day ❤️</h1>
+    <p>When you met my parents…<br>
+    and we saw our future home…<br>
+    I saw our future.</p>
+  </div>
+</section>
+
+<!-- 🌊 BEACH -->
+<section class="section">
+  <img src="https://picsum.photos/1080/1920?9" class="bg">
+  <div class="fade"></div>
+  <div class="container">
+    <h1>Our Beaches 🌊</h1>
+    <p>Every beach day with you is a core memory.<br><br>
+    But next… we’re going to the mountains ☕</p>
   </div>
 </section>
 
 <script>
+/* SCROLL ANIMATION */
 const sections = document.querySelectorAll('.section');
-
 window.addEventListener('scroll', () => {
   const trigger = window.innerHeight * 0.8;
-
   sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < trigger) {
+    if (sec.getBoundingClientRect().top < trigger) {
       sec.classList.add('show');
     }
   });
 });
 
+<button onclick="checkPassword()">Secret ❤️</button>
+  function checkPassword() {
+  let pass = prompt("Enter password ❤️");
+  if(pass === "i love you") {
+    window.location.href = "secret.html";
+  } else {
+    alert("Wrong password 😭");
+  }
+}
 /* MUSIC */
 const music = document.getElementById("music");
 let playing = false;
-
 function toggleMusic() {
   if (!playing) {
     music.play();
@@ -201,6 +249,27 @@ function toggleMusic() {
   }
   playing = !playing;
 }
+
+/* HEARTS */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 500);
+
+/* TIME COUNTER */
+const startDate = new Date("2025-12-01"); // CHANGE THIS
+function updateCounter() {
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("counter").innerText =
+    days + " days with you ❤️";
+}
+setInterval(updateCounter, 1000);
 </script>
 
 </body>
