@@ -25,9 +25,9 @@ body {background:black;color:white;overflow-x:hidden;}
   position:absolute;
   width:100%;
   height:100%;
-  object-fit:contain; /* ✅ FULL IMAGE ALWAYS */
+  object-fit:contain; /* FULL IMAGE */
   z-index:1;
-  transition:transform 0.3s ease-out;
+  background:black;
 }
 
 .fade {
@@ -114,7 +114,7 @@ html {
 <button class="music-btn" onclick="toggleMusic()">Play ❤️</button>
 <button class="secret-btn" onclick="checkPassword()">Secret ❤️</button>
 
-<!-- ❤️ INTRO -->
+<!-- INTRO -->
 <section class="section">
 <img src="photo1.jpeg" class="bg">
 <div class="fade"></div>
@@ -124,7 +124,7 @@ html {
 </div>
 </section>
 
-<!-- 💌 LOVE -->
+<!-- LOVE -->
 <section class="section">
 <img src="photo2.jpeg" class="bg">
 <div class="fade"></div>
@@ -224,18 +224,18 @@ Next… mountains and coffee ☕</p>
 </section>
 
 <script>
+/* SCROLL ANIMATION */
 const sections=document.querySelectorAll('.section');
-const images=document.querySelectorAll('.bg');
 
 window.addEventListener('scroll',()=>{
-const trigger=window.innerHeight;
+const trigger=window.innerHeight*0.8;
 
-sections.forEach((sec,index)=>{
-const rect=sec.getBoundingClientRect();
-
-if(rect.top<trigger*0.8){
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<trigger){
 sec.classList.add('show');
 }
+});
+});
 
 /* MUSIC */
 const music=document.getElementById("music");
@@ -257,7 +257,7 @@ setTimeout(()=>heart.remove(),5000);
 },600);
 
 /* COUNTER */
-const startDate=new Date("2026-02-04T00:00:00");
+const startDate=new Date("2025-02-04T00:00:00");
 function updateCounter(){
 const now=new Date();
 const diff=now-startDate;
@@ -271,7 +271,7 @@ setInterval(updateCounter,1000);
 
 /* SECRET */
 function checkPassword(){
-let pass=prompt("what is our future child name ??  ❤️");
+let pass=prompt("what is the name of our future kid ❤️");
 if(pass==="nova"){window.location.href="secret.html";}
 else{alert("Wrong password 😭");}
 }
