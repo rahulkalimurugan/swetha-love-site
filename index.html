@@ -6,210 +6,265 @@
 <title>For My Cutie ❤️</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Helvetica Neue', sans-serif;
-}
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Helvetica Neue',sans-serif;}
+body {background:black;color:white;overflow-x:hidden;}
 
-body {
-  background: black;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* SECTION */
 .section {
-  height: 100vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  scroll-snap-align: start;
+  height:100vh;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  scroll-snap-align:start;
 }
 
-/* TEXT */
 .container {
-  z-index: 3;
-  max-width: 700px;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s ease;
+  z-index:3;
+  max-width:700px;
+  padding:20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
-
 .section.show .container {
-  opacity: 1;
-  transform: translateY(0);
+  opacity:1;
+  transform:translateY(0);
 }
 
-h1 { font-size: 2.5em; }
-p { font-size: 1.2em; }
+h1 {font-size:2.5em;}
+p {font-size:1.2em;line-height:1.6;}
 
-/* BACKGROUND */
 .bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);
-  z-index: 1;
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.5);
+  z-index:1;
 }
 
 .fade {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, black, transparent);
-  z-index: 2;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to top, black, transparent);
+  z-index:2;
 }
 
-/* FLOATING HEARTS */
+/* UI */
+.music-btn, .secret-btn {
+  position:fixed;
+  bottom:20px;
+  padding:10px 15px;
+  border-radius:20px;
+  border:none;
+  color:white;
+  z-index:20;
+}
+
+.music-btn {right:20px;background:rgba(0,0,0,0.6);}
+.secret-btn {left:20px;background:rgba(255,0,100,0.6);}
+
+.counter {
+  position:fixed;
+  top:20px;
+  left:20px;
+  z-index:20;
+  background:rgba(0,0,0,0.6);
+  padding:8px 12px;
+  border-radius:15px;
+  font-size:14px;
+}
+
+/* HEARTS */
 .heart {
-  position: fixed;
-  bottom: -20px;
-  color: pink;
-  font-size: 20px;
-  animation: floatUp 5s linear;
-  z-index: 10;
+  position:fixed;
+  bottom:-20px;
+  color:pink;
+  font-size:20px;
+  animation:floatUp 5s linear;
+  z-index:10;
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-110vh); opacity: 0; }
+  from {transform:translateY(0);opacity:1;}
+  to {transform:translateY(-110vh);opacity:0;}
 }
 
-/* MUSIC BUTTON */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 20;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  font-size: 14px;
-}
-
-/* COUNTER */
-.counter {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 20;
-  font-size: 14px;
-  background: rgba(0,0,0,0.6);
-  padding: 8px 12px;
-  border-radius: 15px;
-}
-
-/* SECRET BUTTON */
-.secret-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 20;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,0,100,0.6);
-  color: white;
+html {
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
 }
 </style>
 </head>
 
 <body>
 
-<div class="counter" id="counter">Loading...</div>
+<div class="counter" id="counter"></div>
 
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+  <source src="music.mp3">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">Play ❤️</button>
 <button class="secret-btn" onclick="checkPassword()">Secret ❤️</button>
 
-<!-- ❤️ INTRO -->
+<!-- INTRO -->
 <section class="section">
-  <img src="https://picsum.photos/1080/1920?1" class="bg">
-  <div class="fade"></div>
-  <div class="container">
-    <h1>Hey cutie ❤️</h1>
-    <p>You’re my queen. Always have been.</p>
-  </div>
+<img src="photo1.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Hey cutie ❤️</h1>
+<p>You’re not just anyone… you’re my queen.</p>
+</div>
 </section>
 
-<!-- ADD YOUR OTHER SECTIONS HERE (same as before) -->
+<!-- LOVE -->
+<section class="section">
+<img src="photo2.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<p>I don’t think I’ll ever explain how much I love you…<br><br>
+But I’ll keep trying. Always.</p>
+</div>
+</section>
+
+<!-- FIRST DATE -->
+<section class="section">
+<img src="photo3.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Our First Date ❤️</h1>
+<p>Nassau Hub… bowling… and that terrible pasta 😭<br>
+You saved me with that burger.<br>
+That moment meant everything.</p>
+</div>
+</section>
+
+<!-- HUG -->
+<section class="section">
+<img src="photo4.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>That Hug 🫂</h1>
+<p>You needed me… and I came.<br>
+That hug… I’ll never forget it.</p>
+</div>
+</section>
+
+<!-- DINNER -->
+<section class="section">
+<img src="photo5.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Dinner Dates 🍽️</h1>
+<p>All those nights after your clinic…<br>
+Those dinners meant everything.<br><br>
+(Yes I was trying to make you fat 😭❤️)</p>
+</div>
+</section>
+
+<!-- RINGS -->
+<section class="section">
+<img src="photo6.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Our Rings 💍</h1>
+<p>That day felt different…<br>
+Like we were already building our future.</p>
+</div>
+</section>
+
+<!-- HOSPITAL -->
+<section class="section">
+<img src="photo7.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Hospital Days 🏥</h1>
+<p>Nerve-racking… but new experiences with you.</p>
+</div>
+</section>
+
+<!-- FUN -->
+<section class="section">
+<img src="photo8.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Our Chaos 🎮</h1>
+<p>Timezone, bowling, claw machines…<br>
+And you destroying me in games 😭</p>
+</div>
+</section>
+
+<!-- FUTURE -->
+<section class="section">
+<img src="photo9.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Our Future ❤️</h1>
+<p>Meeting my parents… seeing our future home…<br>
+I saw everything with you.</p>
+</div>
+</section>
+
+<!-- BEACH -->
+<section class="section">
+<img src="photo10.jpg" class="bg">
+<div class="fade"></div>
+<div class="container">
+<h1>Our Beaches 🌊</h1>
+<p>Every beach day is a core memory.<br><br>
+Next… mountains and coffee ☕</p>
+</div>
+</section>
 
 <script>
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll('.section');
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.8;
-  sections.forEach(sec => {
-    if (sec.getBoundingClientRect().top < trigger) {
-      sec.classList.add('show');
-    }
-  });
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+const trigger=window.innerHeight*0.8;
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<trigger){sec.classList.add('show');}
+});
 });
 
 /* MUSIC */
-const music = document.getElementById("music");
-let playing = false;
-
-function toggleMusic() {
-  if (!playing) {
-    music.play();
-    document.querySelector(".music-btn").innerText = "Pause ❤️";
-  } else {
-    music.pause();
-    document.querySelector(".music-btn").innerText = "Play ❤️";
-  }
-  playing = !playing;
+const music=document.getElementById("music");
+let playing=false;
+function toggleMusic(){
+if(!playing){music.play();document.querySelector(".music-btn").innerText="Pause ❤️";}
+else{music.pause();document.querySelector(".music-btn").innerText="Play ❤️";}
+playing=!playing;
 }
 
-/* HEARTS FIXED */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerText = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(heart);
+/* HEARTS */
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerText="❤️";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),5000);
+},600);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}, 600);
-
-/* COUNTER FIXED */
-const startDate = new Date("2025-12-01"); // CHANGE THIS
-
-function updateCounter() {
-  const now = new Date();
-  const diff = now - startDate;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-
-  document.getElementById("counter").innerText =
-    days + " days " + hours + " hrs with you ❤️";
+/* COUNTER (FIXED DATE) */
+const startDate=new Date("2026-02-04T00:00:00");
+function updateCounter(){
+const now=new Date();
+const diff=now-startDate;
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor(diff/(1000*60*60))%24;
+document.getElementById("counter").innerText=
+days+" days "+hours+" hrs ❤️";
 }
-
 updateCounter();
-setInterval(updateCounter, 1000);
+setInterval(updateCounter,1000);
 
-/* SECRET PAGE */
-function checkPassword() {
-  let pass = prompt("Enter password ❤️");
-  if (pass === "cutie123") {
-    window.location.href = "secret.html";
-  } else {
-    alert("Wrong password 😭");
-  }
+/* SECRET */
+function checkPassword(){
+let pass=prompt("You're my ?? ❤️");
+if(pass==="everything"){window.location.href="secret.html";}
+else{alert("Wrong password 😭");}
 }
 </script>
 
