@@ -11,12 +11,17 @@ body {background:black;color:white;overflow-x:hidden;}
 
 .section {
   height:100vh;
-  position:relative;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
   scroll-snap-align:start;
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  transition: transform 0.3s ease-out;
 }
 
 .container {
@@ -27,6 +32,7 @@ body {background:black;color:white;overflow-x:hidden;}
   transform:translateY(40px);
   transition:1s ease;
 }
+
 .section.show .container {
   opacity:1;
   transform:translateY(0);
@@ -34,15 +40,6 @@ body {background:black;color:white;overflow-x:hidden;}
 
 h1 {font-size:2.5em;}
 p {font-size:1.2em;line-height:1.6;}
-
-.bg {
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:contain; 
-  background:black;   
-  z-index:1;
-}
 
 .fade {
   position:absolute;
@@ -96,6 +93,13 @@ html {
   scroll-snap-type:y mandatory;
   scroll-behavior:smooth;
 }
+
+/* MOBILE FIX */
+@media (max-width:768px){
+  .section {
+    transform:none !important;
+  }
+}
 </style>
 </head>
 
@@ -110,9 +114,8 @@ html {
 <button class="music-btn" onclick="toggleMusic()">Play ❤️</button>
 <button class="secret-btn" onclick="checkPassword()">Secret ❤️</button>
 
-<!-- INTRO -->
-<section class="section">
-<img src="photo1.jpeg" class="bg">
+<!-- ❤️ INTRO -->
+<section class="section" style="background-image:url('photo1.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Hey cutie ❤️</h1>
@@ -120,9 +123,8 @@ html {
 </div>
 </section>
 
-<!-- LOVE -->
-<section class="section">
-<img src="photo2.jpeg" class="bg">
+<!-- 💌 LOVE -->
+<section class="section" style="background-image:url('photo2.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <p>I don’t think I’ll ever explain how much I love you…<br><br>
@@ -131,8 +133,7 @@ But I’ll keep trying. Always.</p>
 </section>
 
 <!-- FIRST DATE -->
-<section class="section">
-<img src="photo3.jpeg" class="bg">
+<section class="section" style="background-image:url('photo3.jpeg'); background-position: top;">
 <div class="fade"></div>
 <div class="container">
 <h1>Our First Date ❤️</h1>
@@ -143,8 +144,7 @@ That moment meant everything.</p>
 </section>
 
 <!-- HUG -->
-<section class="section">
-<img src="photo4.jpeg" class="bg">
+<section class="section" style="background-image:url('photo4.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>That Hug 🫂</h1>
@@ -154,8 +154,7 @@ That hug… I’ll never forget it.</p>
 </section>
 
 <!-- DINNER -->
-<section class="section">
-<img src="photo5.jpeg" class="bg">
+<section class="section" style="background-image:url('photo5.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Dinner Dates 🍽️</h1>
@@ -166,8 +165,7 @@ Those dinners meant everything.<br><br>
 </section>
 
 <!-- RINGS -->
-<section class="section">
-<img src="photo6.jpeg" class="bg">
+<section class="section" style="background-image:url('photo6.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Our Rings 💍</h1>
@@ -177,8 +175,7 @@ Like we were already building our future.</p>
 </section>
 
 <!-- HOSPITAL -->
-<section class="section">
-<img src="photo7.jpeg" class="bg">
+<section class="section" style="background-image:url('photo7.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Hospital Days 🏥</h1>
@@ -187,8 +184,7 @@ Like we were already building our future.</p>
 </section>
 
 <!-- FUN -->
-<section class="section">
-<img src="photo8.jpeg" class="bg">
+<section class="section" style="background-image:url('photo8.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Our Chaos 🎮</h1>
@@ -198,8 +194,7 @@ And you destroying me in games 😭</p>
 </section>
 
 <!-- FUTURE -->
-<section class="section">
-<img src="photo9.jpeg" class="bg">
+<section class="section" style="background-image:url('photo9.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Our Future ❤️</h1>
@@ -209,8 +204,7 @@ I saw everything with you.</p>
 </section>
 
 <!-- BEACH -->
-<section class="section">
-<img src="photo10.jpeg" class="bg">
+<section class="section" style="background-image:url('photo10.jpeg');">
 <div class="fade"></div>
 <div class="container">
 <h1>Our Beaches 🌊</h1>
@@ -221,10 +215,24 @@ Next… mountains and coffee ☕</p>
 
 <script>
 const sections=document.querySelectorAll('.section');
+
 window.addEventListener('scroll',()=>{
-const trigger=window.innerHeight*0.8;
+const trigger=window.innerHeight;
+
 sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<trigger){sec.classList.add('show');}
+const rect=sec.getBoundingClientRect();
+
+if(rect.top<trigger*0.8){
+sec.classList.add('show');
+}
+
+// 🎬 PARALLAX
+let offset=rect.top*0.3;
+sec.style.backgroundPosition=`center ${offset}px`;
+
+// 🔥 ZOOM
+let scale=1+(Math.abs(rect.top)/window.innerHeight)*0.15;
+sec.style.transform=`scale(${scale})`;
 });
 });
 
@@ -247,8 +255,8 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),5000);
 },600);
 
-/* COUNTER (FIXED DATE) */
-const startDate=new Date("2026-02-04T00:00:00");
+/* COUNTER */
+const startDate=new Date("2025-02-04T00:00:00");
 function updateCounter(){
 const now=new Date();
 const diff=now-startDate;
@@ -262,8 +270,8 @@ setInterval(updateCounter,1000);
 
 /* SECRET */
 function checkPassword(){
-let pass=prompt("You're my ?? ❤️");
-if(pass==="everything"){window.location.href="secret.html";}
+let pass=prompt("what is our future kid name ?? ❤️");
+if(pass==="nova"){window.location.href="secret.html";}
 else{alert("Wrong password 😭");}
 }
 </script>
